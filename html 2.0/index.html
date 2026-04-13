@@ -45,7 +45,6 @@
             transform: translateY(0);
         }
 
-        /* Animações do Chat */
         #whatsapp-chat {
             display: none;
             opacity: 0;
@@ -74,11 +73,10 @@
     </div>
 
     <div class="fixed bottom-10 right-10 z-[100] flex flex-col items-end">
-        
         <div id="whatsapp-chat" class="mb-6 w-[340px] bg-white rounded-[32px] shadow-[0_20px_60px_rgba(15,58,71,0.2)] border border-petroleum/5 overflow-hidden">
             <div class="bg-petroleum p-6 flex items-center gap-4">
                 <div class="relative w-14 h-14 rounded-full overflow-hidden border-2 border-emerald-light shadow-lg bg-milky">
-                    <img src="consultora Camila.jpg" alt="Camila Germano" class="w-full h-full object-cover">
+                    <img src="consultora-camila.jpg" alt="Camila Germano" class="w-full h-full object-cover">
                     <span class="absolute bottom-1 right-1 w-3 h-3 bg-emerald-light border-2 border-petroleum rounded-full animate-pulse"></span>
                 </div>
                 <div>
@@ -91,7 +89,6 @@
                     <i data-lucide="x" class="w-6 h-6"></i>
                 </button>
             </div>
-            
             <div class="p-6 bg-milky/30">
                 <div class="bg-white p-4 rounded-2xl rounded-tl-none shadow-sm border border-petroleum/5 text-sm text-petroleum leading-relaxed">
                     Olá! Me chamo <strong>Camila</strong>, sou consultora técnica da Germano. <br><br>
@@ -99,7 +96,6 @@
                 </div>
                 <p class="text-[10px] text-petroleum/30 mt-4 uppercase font-bold tracking-[0.2em] text-center">Resposta em menos de 5 min</p>
             </div>
-
             <div class="p-6 pt-0">
                 <a href="https://wa.me/5562999999999" target="_blank" class="flex items-center justify-center gap-3 bg-emerald hover:bg-[#03664a] text-white py-4 rounded-2xl font-bold transition-all shadow-lg shadow-emerald/20 transform active:scale-95">
                     <img src="3d-round-with-whatsapp-logo.png" class="w-6 h-6" alt="">
@@ -107,7 +103,6 @@
                 </a>
             </div>
         </div>
-
         <button onclick="toggleChat()" class="group flex items-center justify-center relative cursor-pointer">
             <span class="absolute w-16 h-16 bg-emerald/30 rounded-full animate-ping group-hover:animate-none"></span>
             <div class="relative bg-emerald w-16 h-16 rounded-full shadow-2xl flex items-center justify-center transition-all duration-500 group-hover:scale-110 group-hover:rotate-12">
@@ -132,7 +127,6 @@
     <section id="scroll-hero" style="height:400vh;position:relative;background-color:#000;">
         <div style="position:sticky;top:0;height:100vh;width:100%;overflow:hidden;">
             <canvas id="hero-canvas" style="position:absolute;inset:0;width:100vw;height:100vh;display:block;"></canvas>
-            
             <div style="position:absolute;inset:0;z-index:2;display:flex;flex-direction:column;justify-content:center;align-items:center;pointer-events:none;">
                 <div class="text-center px-6 max-w-5xl">
                     <h1 id="text-01" class="text-6xl md:text-8xl font-black text-white tracking-tighter leading-tight mb-6 uppercase drop-shadow-2xl">
@@ -161,7 +155,6 @@
                     Tecnologia de ponta desenvolvida para maximizar o rendimento do seu rebanho.
                 </p>
             </div>
-
             <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
                 <div class="parallax-card card-delay-1 group cursor-pointer">
                     <div class="relative overflow-hidden rounded-[40px] aspect-[4/5] bg-white border border-petroleum/5 mb-8 shadow-sm">
@@ -211,11 +204,9 @@
             const text01 = document.getElementById("text-01");
             const text02 = document.getElementById("text-02");
             const text03 = document.getElementById("text-03");
-            
             const frameCount = 78;
             const images = [];
             let loadedImages = 0;
-
             const getUrl = (index) => `./frame_${index.toString().padStart(2, '0')}_delay-0.041s.webp`;
 
             const resizeCanvas = () => {
@@ -228,8 +219,6 @@
                 const canvasRatio = canvas.width / canvas.height;
                 const imgRatio = img.width / img.height;
                 let drawWidth, drawHeight, x = 0, y = 0;
-                
-                // LÓGICA COVER (FULL SCREEN)
                 if (canvasRatio > imgRatio) {
                     drawWidth = canvas.width;
                     drawHeight = img.height * (canvas.width / img.width);
@@ -269,10 +258,7 @@
                 const maxScroll = heroEl.offsetHeight - window.innerHeight;
                 const fraction = Math.max(0, Math.min(1, scrollY / maxScroll));
                 const frameIndex = Math.min(frameCount - 1, Math.floor(fraction * frameCount));
-                
-                if (images[frameIndex]) {
-                    requestAnimationFrame(() => drawImage(images[frameIndex]));
-                }
+                if (images[frameIndex]) requestAnimationFrame(() => drawImage(images[frameIndex]));
 
                 if (fraction <= 0.25) {
                     text01.style.opacity = 1 - (fraction * 4);
